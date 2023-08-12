@@ -1,7 +1,9 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const { User, Post, Comment } = require("../../models");
 
 router.post("/signup", async (req, res) => {
+  
+  // make it work with handlebars login page
   try {
     const userData = await User.create(req.body);
     req.session.save(() => {
@@ -11,8 +13,9 @@ router.post("/signup", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
-  }
+  } 
 });
+
 
 router.post("/login", async (req, res) => {
   try {
